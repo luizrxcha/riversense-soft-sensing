@@ -40,6 +40,7 @@ riversense-soft-sensing/
 │   └── artigos/              # PDF do projeto de IC e referências acadêmicas
 ├── .gitignore                # Arquivos ignorados pelo controle de versão do Git
 └── README.md                 # Apresentação do repositório (esta vitrine)
+```
 🧪 Metodologia e Coleta de Dados (Bancada)
 Para treinar a Inteligência Artificial, o projeto prevê três ensaios práticos controlados em laboratório para simulação de cenários de poluição:
 Picos de Salinidade: Adição gradual de cloreto de sódio para alterar a condutividade elétrica e o TDS.
