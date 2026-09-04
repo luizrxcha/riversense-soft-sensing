@@ -1,21 +1,21 @@
 # Sensoriamento Virtual de Poluentes Hídricos: Predição via Machine Learning com Sensores de Baixo Custo em Rios Brasileiros 🌊
 
-Este repositório contém os códigos, firmwares e conjuntos de dados do projeto de Iniciação Científica desenvolvido no **Instituto Federal de Educação, Ciência e Tecnologia de São Paulo (IFSP) - Campus Bragança Paulista**, sob fomento do **Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq)**.
+Este repositório contém os códigos, firmwares e conjuntos de dados do projeto de Iniciação Científica desenvolvido no **Instituto Federal de Educação, Ciência e Tecnologia de São Paulo (IFSP) - Campus Bragança Paulista**, sob fomento do **Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq)** [cite: 570].
 
-O projeto está alinhado diretamente à **Meta 6.3 da Agenda 2030 da Organização das Nações Unidas (ONU)**, visando apoiar o avanço do **Indicador 6.3.2** (proporção de corpos hídricos com boa qualidade ambiental) através do monitoramento em tempo real e de baixo custo.
+O projeto está alinhado diretamente à **Meta 6.3 da Agenda 2030 da Organização das Nações Unidas (ONU)**, visando apoiar o avanço do **Indicador 6.3.2** (proporção de corpos hídricos com boa qualidade ambiental) através do monitoramento em tempo real e de baixo custo [cite: 571, 572].
 
 ---
 
 ## 📋 Sobre o Projeto
 
-O monitoramento contínuo de nutrientes críticos (como Nitrogênio e Fósforo) e contaminação microbiológica (*E. coli*) em rios brasileiros esbarra em barreiras técnico-financeiras extremas, devido ao custo proibitivo de estações automatizadas comerciais.
+O monitoramento contínuo de nutrientes críticos (como Nitrogênio e Fósforo) e contaminação microbiológica (*E. coli*) em rios brasileiros esbarra em barreiras técnico-financeiras extremas, devido ao custo proibitivo de estações automatizadas comerciais [cite: 571, 573].
 
 Este projeto utiliza a metodologia de **Sensoriamento Virtual (Soft-Sensing)**:
 
-1. **Aquisição Econômica:** Sensores físicos básicos de Nível 1 (pH, temperatura, turbidez e condutividade elétrica/TDS) capturam as variáveis de fácil medição.
-2. **Inteligência Artificial:** Um modelo supervisionado **Random Forest** mapeia as interações matemáticas não-lineares dessas variáveis básicas para prever indiretamente a presença de poluentes complexos.
-3. **Edge AI / Computação na Borda:** O modelo matemático é portado de Python para C/C++ e embarcado no microcontrolador local **ESP32**, garantindo inferências locais instantâneas e autonomia energética.
-4. **Protótipo Mecânico:** A eletrônica é encapsulada em uma boia estanque baseada na arquitetura **AquaNode**, alimentada por um sistema solar fotovoltaico com rotinas de baixo consumo (*deep sleep*).
+1. **Aquisição Econômica:** Sensores físicos básicos de Nível 1 (pH, temperatura, turbidez e condutividade elétrica/TDS) capturam as variáveis de fácil medição [cite: 571, 575].
+2. **Inteligência Artificial:** Um modelo supervisionado **Random Forest** mapeia as interações matemáticas não-lineares dessas variáveis básicas para prever indiretamente a presença de poluentes complexos [cite: 571, 576].
+3. **Edge AI / Computação na Borda:** O modelo matemático é portado de Python para C/C++ e embarcado no microcontrolador local **ESP32**, garantindo inferências locais instantâneas e autonomia energética [cite: 571, 578].
+4. **Protótipo Mecânico:** A eletrônica é encapsulada em uma boia estanque baseada na arquitetura **AquaNode**, alimentada por um sistema solar fotovoltaico com rotinas de baixo consumo (*deep sleep*) [cite: 571, 579].
 
 ---
 
@@ -41,56 +41,44 @@ riversense-soft-sensing/
 ├── .gitignore                # Arquivos ignorados pelo controle de versão do Git
 └── README.md                 # Apresentação do repositório (esta vitrine)
 ```
-🧪 Metodologia e Coleta de Dados (Bancada)
-Para treinar a Inteligência Artificial, o projeto prevê três ensaios práticos controlados em laboratório para simulação de cenários de poluição:
-Picos de Salinidade: Adição gradual de cloreto de sódio para alterar a condutividade elétrica e o TDS.
-Assoreamento e Erosão: Introdução controlada de lama/solo para variar a turbidez óptica.
-Carga Orgânica: Adição de água de aquário rica em dejetos para monitorar alterações acopladas no pH e na condutividade causadas por compostos nitrogenados.
-Os dados lidos no ESP32 são limpos por filtros digitais de média móvel, rotulados e exportados para o computador para estruturar o dataset de treinamento.
-🛠️ Conexões Elétricas Recomendadas
-A pinagem recomendada para montagem e aquisição de dados via ADC1 no ESP32 para evitar conflitos com o hardware de comunicação sem fio:
-Sensor / Componente
-Tipo de Sinal
-Pino Recomendado
-Alimentação
-Observação Física
-TDS (Condutividade)
-Analógico
-GPIO 34
-3.3V (ou 5V)
-Ligar o pino de sinal (Ao) diretamente na porta 34.
-pH (Módulo 4502c)
-Analógico
-GPIO 35
-5V
-Ligar o pino Po diretamente na porta 35.
-Turbidez (Óptico)
-Analógico
-GPIO 32
-5V
-Requer atenção: O sinal de saída precisa passar por um divisor de tensão (resistores) ou conversor lógico antes de entrar na porta 32.
-DS18B20 (Temperatura)
-Digital (1-Wire)
-GPIO 4
-3.3V (ou 5V)
-Ligar o pino de dados na porta 4. Exige um resistor de 4.7kΩ fazendo uma ponte entre a linha de dados e a linha de VCC.
-Nota de Aterramento: Lembre-se de que todos os pinos GND dos sensores e do circuito devem obrigatoriamente estar conectados à mesma trilha azul (terra) da protoboard, que por sua vez deve estar ligada ao GND do ESP32.
-⚖️ Aviso de Transparência (Portaria CNPq nº 2664/2026)
-Ferramentas de Inteligência Artificial Generativa foram utilizadas estritamente para auxílio na estruturação de tópicos e revisão gramatical da escrita deste projeto, sendo o autor integralmente responsável pelo conteúdo técnico, código final e integridade da pesquisa científica aqui apresentada.
-🧑‍🔬 Equipe e Contatos
-Orientando/Pesquisador: [Seu Nome] - [Seu E-mail]
-Orientador: Prof. Dr. Alexandre Tomazati Oliveira - tomazati@ifsp.edu.br
-Instituição: Instituto Federal de São Paulo (IFSP) - Campus Bragança Paulista
 
-4. **Salve o arquivo** (`Ctrl + S`).
-5. No seu **Git Bash**, envie a correção digitando os comandos abaixo um por um:
+---
 
-```bash
-# 1. Adiciona a correção do README.md
-git add README.md
+## 🧪 Metodologia e Coleta de Dados (Bancada)
 
-# 2. Registra o commit da correção
-git commit -m "docs: corrige formatacao e espacamento do readme"
+Para treinar a Inteligência Artificial, o projeto prevê três ensaios práticos controlados em laboratório para simulação de cenários de poluição [cite: 571, 586]:
 
-# 3. Envia para o GitHub
-git push origin main
+* **Picos de Salinidade:** Adição gradual de cloreto de sódio para alterar a condutividade elétrica e o TDS [cite: 571, 586].
+* **Assoreamento e Erosão:** Introdução controlada de lama/solo para variar a turbidez óptica [cite: 571, 586].
+* **Carga Orgânica:** Adição de água de aquário rica em dejetos para monitorar alterações acopladas no pH e na condutividade causadas por compostos nitrogenados [cite: 571, 586].
+
+Os dados lidos no ESP32 são limpos por filtros digitais de média móvel, rotulados e exportados para o computador para estruturar o dataset de treinamento [cite: 571, 585, 587].
+
+---
+
+## 🛠️ Conexões Elétricas Recomendadas
+
+A pinagem recomendada para montagem e aquisição de dados via ADC1 no ESP32 para evitar conflitos com o hardware de comunicação sem fio [cite: 321]:
+
+| Sensor / Componente | Tipo de Sinal | Pino Recomendado | Alimentação | Observação Física |
+| :--- | :--- | :--- | :--- | :--- |
+| **TDS (Condutividade)** | Analógico | **GPIO 34** | 3.3V (ou 5V) | Ligar o pino de sinal (Ao) diretamente na porta 34 [cite: 321]. |
+| **pH (Módulo 4502c)** | Analógico | **GPIO 35** | 5V | Ligar o pino *Po* diretamente na porta 35 [cite: 321]. |
+| **Turbidez (Óptico)** | Analógico | **GPIO 32** | 5V | **Requer atenção:** O sinal de saída precisa passar por um divisor de tensão (resistores) ou conversor lógico antes de entrar na porta 32 [cite: 321]. |
+| **DS18B20 (Temperatura)** | Digital (1-Wire) | **GPIO 4** | 3.3V (ou 5V) | Ligar o pino de dados na porta 4. **Exige** um resistor de 4.7kΩ fazendo uma ponte entre a linha de dados e a linha de VCC [cite: 321]. |
+
+**Nota de Aterramento:** Lembre-se de que todos os pinos GND dos sensores e do circuito devem obrigatoriamente estar conectados à mesma trilha azul (terra) da protoboard, que por sua vez deve estar ligada ao GND do ESP32 [cite: 321].
+
+---
+
+## ⚖️ Aviso de Transparência (Portaria CNPq nº 2664/2026)
+
+Ferramentas de Inteligência Artificial Generativa foram utilizadas estritamente para auxílio na estruturação de tópicos e revisão gramatical desta escrita, sendo o autor integralmente responsável pelo conteúdo técnico, código final e integridade da pesquisa científica aqui apresentada [cite: 580].
+
+---
+
+## 🧑‍🔬 Equipe e Contatos
+
+* **Orientando/Pesquisador:** Luiz Fernando Rocha
+* **Orientador:** Prof. Dr. Alexandre Tomazati Oliveira - `tomazati@ifsp.edu.br` [cite: 571]
+* **Instituição:** Instituto Federal de São Paulo (IFSP) - Campus Bragança Paulista [cite: 570]
