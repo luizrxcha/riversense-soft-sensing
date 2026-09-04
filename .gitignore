@@ -1,0 +1,18 @@
+# --- Python & Jupyter ---
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+.virtualenv/
+.venv/
+env/
+venv/
+*.csv_temp
+
+# --- C++ & Arduino/ESP32 ---
+.vscode/
+build/
+bin/
+*.o
+*.elf
+*.hex
